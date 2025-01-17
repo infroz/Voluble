@@ -9,11 +9,12 @@ an assertion library not costing 130$ per seat.
 ```
 
 ## Installation
-Nuget-Cli
-```bash
-nuget install Voluble
-```
 Dotnet-Cli
 ```bash
 dotnet add package Voluble
+```
+
+## Usage
+```csharp
+1.Should().Be(1);
 ```
