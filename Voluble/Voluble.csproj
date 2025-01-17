@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <TargetFrameworks>net9.0;net8.0</TargetFrameworks>
+        <Title>Voluble Assertion Library</Title>
+        <Authors>Infroz</Authors>
+        <Description>Offering voluble assertions with an eternaly open-source promise</Description>
+    </PropertyGroup>
+
+</Project>
