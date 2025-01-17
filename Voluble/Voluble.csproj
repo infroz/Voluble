@@ -7,6 +7,11 @@
         <Title>Voluble Assertion Library</Title>
         <Authors>Infroz</Authors>
         <Description>Offering voluble assertions with an eternaly open-source promise</Description>
+        <Copyright>Apache 2.0</Copyright>
+        <PackageProjectUrl>https://github.com/infroz/Voluble</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/infroz/Voluble/blob/master/LICENSE.md</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/infroz/Voluble</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
     </PropertyGroup>
 
 </Project>
