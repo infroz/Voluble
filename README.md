@@ -1,3 +1,5 @@
+Notice - This library is essentially made as a joke, feel free to use it but as of now I do not guarantee updates. Consider using Shouldly.
+
 # Voluble
 Definition
 ```quote
@@ -8,6 +10,7 @@ or.
 an assertion library not costing 130$ per seat.
 ```
 
+
 ## Installation
 Dotnet-Cli
 ```bash
@@ -16,5 +19,12 @@ dotnet add package Voluble
 
 ## Usage
 ```csharp
-1.Should().Be(1);
+// Simple Assertion
+0.Should().NotBe(130);
+
+// Collect all errors
+using (new VolubleScope()) {
+    "syntactic sugar".Should().Be("syntactic sugar");
+}
 ```
+
