@@ -6,7 +6,7 @@ namespace Voluble;
 public static class BeExtension
 {
    // Simple Comparisons
-   public static void Be(this VolubleAsserrtion assertion, object expected)
+   public static void Be(this VolubleAsserrtion assertion, object? expected)
    {
       if (!assertion.Obj.Equals(expected))
       {
