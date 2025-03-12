@@ -1,7 +1,35 @@
+using Voluble.Exceptions;
+
 namespace Voluble.Unit.Should;
 
-public class ThrowsTests
+public class ActionTests
 {
+    [Fact]
+    public void ShouldNotThrow()
+    {
+        var method = () => { return 5; };
+        
+        // Arrange
+        var action = () => { method(); };
+        // Act
+
+        // Assert
+        action.Should().NotThrow<Exception>();
+    }
+    
+    [Fact]
+    public void ShouldThrow()
+    {
+        // Arrange
+        var action = () => { throw new Exception("Test"); };
+        // Act
+
+        // Assert
+        var act = () => action.Should().NotThrow<Exception>();
+        Assert.Throws<Failure>(act);
+    }
+    
+    
     [Fact]
     public void ExpectActionThrow_VolubleDoes()
     {
@@ -25,7 +53,7 @@ public class ThrowsTests
     [Fact]
     public void ActionSucceeds_VolubleExpectsException()
     {
-        var act = () => { return 5; };
+        var act = () => { };
 
         var act2 = () => act.Should().Throw<Exception>();
 

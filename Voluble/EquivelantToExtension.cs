@@ -7,7 +7,7 @@ public static class EquivalentToExtension
     /**
      * Checks if result has same fields and values as expected
      */
-    public static void BeEquivalentTo(this VolubleAsserrtion actual, object? expected)
+    public static void BeEquivalentTo<TObject>(this VolubleAsserrtion<TObject?> actual, object? expected)
     {
         // todo: add code to handle arrays
         // 0. check for nulls

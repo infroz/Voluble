@@ -1,7 +1,7 @@
 namespace Voluble;
 
-public class VolubleAsserrtion
+public class VolubleAsserrtion<TObject>
 {
-    internal object? Obj { get; init; }
+    internal TObject? Obj { get; init; }
     internal string Name { get; init; }
 }
