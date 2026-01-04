@@ -6,7 +6,7 @@ namespace Voluble;
 public static class BeExtension
 {
    // Simple Comparisons
-   public static void Be<TEquatable>(this VolubleAsserrtion<TEquatable?> assertion, TEquatable? expected)
+   public static void Be<TEquatable>(this VolubleAssertion<TEquatable> assertion, TEquatable? expected)
    {
       if (assertion.Obj is null && expected is not null)
          VolubleScope.FailWith($"Expected {assertion.Name} to be {expected}");  

@@ -3,7 +3,7 @@ namespace Voluble;
 public static class NotBeExtension
 {
     // simple
-    public static void NotBe<TEquatable>(this VolubleAsserrtion<TEquatable> assertion, TEquatable? expected) where TEquatable : IEquatable<TEquatable>
+    public static void NotBe<TEquatable>(this VolubleAssertion<TEquatable> assertion, TEquatable? expected) where TEquatable : IEquatable<TEquatable>
     {
         if (assertion.Obj is null && expected is null)
         {

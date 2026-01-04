@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Voluble.Exceptions;
 
@@ -8,6 +9,7 @@ public class VolubleScope : IDisposable
     internal List<Failure> Failures = [];
     
     [ThreadStatic] private static VolubleScope? _current;
+    private static bool isInScope => _current is not null;
 
     private static VolubleScope? _old;
 
@@ -16,7 +18,7 @@ public class VolubleScope : IDisposable
         _old = _current;
         _current = this;
     }
-    
+  
     internal static void FailWith(string message)
     {
         if (_current is null)
@@ -24,6 +26,7 @@ public class VolubleScope : IDisposable
         
         _current.Failures.Add(new Failure(message));
     }
+
 
     public void Dispose()
     {

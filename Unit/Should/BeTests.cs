@@ -5,6 +5,15 @@ namespace Voluble.Unit.Should;
 public class BeTests
 {
     [Fact]
+    public void Be_CanChainNullable_WhenValueIsNullable()
+    {
+        string? value = null;
+        
+        var act = () => value.Should().Be(null);
+        
+    }
+    
+    [Fact]
     public void NumbersEqualNumbers_ShouldNotThrow()
     {
         var act = () => 5.Should().Be(5);

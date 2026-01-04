@@ -33,4 +33,17 @@ public class NotBeNullTests
         return;
         void Act() => value.Should().NotBeNull();
     }
+    
+    [Fact]
+    public void NotBeNull_NoNullWarning_WhenValueIsNotNull()
+    {
+        const string value = "not null";
+
+        return;
+        void Act()
+        {
+            value.Should().NotBeNull();
+            value.Should().Be("not null");
+        }
+    }
 }

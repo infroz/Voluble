@@ -2,7 +2,7 @@ namespace Voluble;
 
 public static class ActionExtension
 {
-    public static void NotThrow<TException>(this VolubleAsserrtion<Action> assertion) 
+    public static void NotThrow<TException>(this VolubleAssertion<Action> assertion) 
         where TException : Exception
     {
         if (assertion.Obj is not Delegate @delegate)
@@ -24,7 +24,7 @@ public static class ActionExtension
     }
     
     
-    public static void Throw<TException>(this VolubleAsserrtion<Action> assertion) where TException : Exception
+    public static void Throw<TException>(this VolubleAssertion<Action> assertion) where TException : Exception
     {
         if (assertion.Obj is not Delegate @delegate)
         {
