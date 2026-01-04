@@ -13,6 +13,9 @@
         <RepositoryUrl>https://github.com/infroz/Voluble</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <Version>0.1.0</Version>
+        <IsPackable>true</IsPackable>
+        <IncludeSymbols>true</IncludeSymbols>
+        <IncludeSource>true</IncludeSource>
     </PropertyGroup>
     <PropertyGroup>
         <PackageReadmeFile>README.md</PackageReadmeFile>
