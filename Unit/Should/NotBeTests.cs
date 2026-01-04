@@ -16,7 +16,7 @@ public class NotBeTests
     public void NumbersNotEqual_ShouldNotThrow()
     {
         var act = () => 5.Should().NotBe(6);
-
+        
         var throws = false;
         try
         {
