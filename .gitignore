@@ -3,6 +3,8 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+Voluble.sln.DotSettings.user
+
 # dotenv files
 .env
 
