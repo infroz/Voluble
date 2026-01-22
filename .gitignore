@@ -5,6 +5,8 @@
 
 Voluble.sln.DotSettings.user
 
+.claude/
+IMPLEMENTATION_PLAN.md
 # dotenv files
 .env
 

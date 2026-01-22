@@ -23,8 +23,16 @@ public class VolubleScope : IDisposable
     {
         if (_current is null)
             throw new Failure(message);
-        
+
         _current.Failures.Add(new Failure(message));
+    }
+
+    internal static void FailWith(string message, string? because)
+    {
+        var fullMessage = string.IsNullOrWhiteSpace(because)
+            ? message
+            : $"{message} because {because}";
+        FailWith(fullMessage);
     }
 
 
