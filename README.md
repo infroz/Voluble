@@ -1,4 +1,4 @@
-# Voluble [![Build and Test](https://github.com/infroz/Voluble/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/infroz/Voluble/actions/workflows/build-and-test.yml) ![NuGet Version](https://img.shields.io/nuget/v/Voluble)
+# Voluble [![Build and Test](https://github.com/infroz/Voluble/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/infroz/Voluble/actions/workflows/build-and-test.yml) [![NuGet Version](https://img.shields.io/nuget/v/Voluble)](https://www.nuget.org/packages/Voluble/)
 
 An open-sourced alternative to expressive assertions.
 
