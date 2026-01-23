@@ -150,7 +150,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string has the specified length.
     /// </summary>
-    public static VolubleAssertion<string?> HaveLength(this VolubleAssertion<string?> assertion, int expectedLength, string? because = null)
+    public static VolubleAssertion<string> HaveLength(this VolubleAssertion<string> assertion, int expectedLength, string? because = null)
     {
         if (assertion.Obj is null)
         {
@@ -167,7 +167,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string has a length greater than the specified value.
     /// </summary>
-    public static VolubleAssertion<string?> HaveLengthGreaterThan(this VolubleAssertion<string?> assertion, int length, string? because = null)
+    public static VolubleAssertion<string> HaveLengthGreaterThan(this VolubleAssertion<string> assertion, int length, string? because = null)
     {
         if (assertion.Obj is null)
         {
@@ -184,7 +184,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string has a length less than the specified value.
     /// </summary>
-    public static VolubleAssertion<string?> HaveLengthLessThan(this VolubleAssertion<string?> assertion, int length, string? because = null)
+    public static VolubleAssertion<string> HaveLengthLessThan(this VolubleAssertion<string> assertion, int length, string? because = null)
     {
         if (assertion.Obj is null)
         {
@@ -201,7 +201,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string is equal to the expected value using the specified comparison type.
     /// </summary>
-    public static VolubleAssertion<string?> BeEquivalentTo(this VolubleAssertion<string?> assertion, string? expected, StringComparison comparison = StringComparison.OrdinalIgnoreCase, string? because = null)
+    public static VolubleAssertion<string> BeEquivalentTo(this VolubleAssertion<string> assertion, string? expected, StringComparison comparison = StringComparison.OrdinalIgnoreCase, string? because = null)
     {
         if (assertion.Obj is null && expected is null)
             return assertion;
