@@ -9,7 +9,7 @@ public static class EquivalentToExtension
     /// Checks if actual object has same fields and values as expected object.
     /// Supports primitives, strings, arrays, and complex objects with properties.
     /// </summary>
-    public static VolubleAssertion<TObject?> BeEquivalentTo<TObject>(this VolubleAssertion<TObject?> actual, object? expected, string? because = null)
+    public static VolubleAssertion<TObject> BeEquivalentTo<TObject>(this VolubleAssertion<TObject> actual, object? expected, string? because = null)
     {
         // Use a HashSet with reference equality to track visited objects for circular reference protection
         var visited = new HashSet<object>(ReferenceEqualityComparer.Instance);

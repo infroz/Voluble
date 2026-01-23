@@ -75,7 +75,8 @@ public class ChainingTests
     public void Should_BeAbleToChainActionAssertions_NoException()
     {
         // When an action doesn't throw, we can chain assertions
-        Action action = () => { var x = 1 + 1; };
+        var action = () => { };
+        
         action.Should()
             .NotThrow<InvalidOperationException>()
             .And.NotThrow<ArgumentException>();
