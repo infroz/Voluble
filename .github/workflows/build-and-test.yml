@@ -3,8 +3,14 @@ name: Build and Test
 on:
   push:
     branches: [master]
+    paths:
+      - '**/*.cs'
+      - '**/*.csproj'
   pull_request:
     branches: [master]
+    paths:
+      - '**/*.cs'
+      - '**/*.csproj'
 
 jobs:
   build:

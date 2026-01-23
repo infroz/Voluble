@@ -34,6 +34,16 @@ jobs:
             echo "Tag v${{ steps.get_version.outputs.version }} does not exist"
           fi
 
+      - name: Setup .NET
+        if: steps.check_tag.outputs.exists == 'false'
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Pack Voluble
+        if: steps.check_tag.outputs.exists == 'false'
+        run: dotnet pack Voluble/Voluble.csproj --configuration Release --output ./artifacts
+
       - name: Create Release
         if: steps.check_tag.outputs.exists == 'false'
         uses: softprops/action-gh-release@v2
@@ -43,3 +53,5 @@ jobs:
           generate_release_notes: true
           draft: false
           prerelease: false
+          files: |
+            ./artifacts/Voluble.${{ steps.get_version.outputs.version }}.symbols.nupkg
