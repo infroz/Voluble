@@ -4,16 +4,18 @@ namespace Voluble;
 
 public partial class VolubleAssertion<TObject>
 {
-    public void BeNull()
+    public VolubleAssertion<TObject> BeNull(string? because = null)
     {
         if (Obj is not null)
-            VolubleScope.FailWith("Object is not null");
+            VolubleScope.FailWith($"Expected {Name} to be null but was '{Obj}'", because);
+        return this;
     }
-    
+
     [MemberNotNull(nameof(Obj))]
-    public void NotBeNull()
+    public VolubleAssertion<TObject> NotBeNull(string? because = null)
     {
         if (Obj is null)
-            VolubleScope.FailWith("Object is null");
+            VolubleScope.FailWith($"Expected {Name} to not be null", because);
+        return this;
     }
 }

@@ -8,7 +8,7 @@ public static class AsyncActionExtension
     /// <summary>
     /// Asserts that the async action throws the specified exception type.
     /// </summary>
-    public static async Task ThrowAsync<TException>(this VolubleAssertion<Func<Task>> assertion)
+    public static async Task<VolubleAssertion<Func<Task>>> ThrowAsync<TException>(this VolubleAssertion<Func<Task>> assertion, string? because = null)
         where TException : Exception
     {
         if (assertion.Obj is null)
@@ -29,16 +29,18 @@ public static class AsyncActionExtension
         if (caught is not TException)
         {
             if (caught is null)
-                VolubleScope.FailWith($"Expected {typeof(TException).Name} to be thrown but no exception was thrown");
+                VolubleScope.FailWith($"Expected {typeof(TException).Name} to be thrown but no exception was thrown", because);
             else
-                VolubleScope.FailWith($"Expected {typeof(TException).Name} to be thrown but {caught.GetType().Name} was thrown");
+                VolubleScope.FailWith($"Expected {typeof(TException).Name} to be thrown but {caught.GetType().Name} was thrown", because);
         }
+
+        return assertion;
     }
 
     /// <summary>
     /// Asserts that the async action does not throw the specified exception type.
     /// </summary>
-    public static async Task NotThrowAsync<TException>(this VolubleAssertion<Func<Task>> assertion)
+    public static async Task<VolubleAssertion<Func<Task>>> NotThrowAsync<TException>(this VolubleAssertion<Func<Task>> assertion, string? because = null)
         where TException : Exception
     {
         if (assertion.Obj is null)
@@ -57,13 +59,15 @@ public static class AsyncActionExtension
         }
 
         if (caught is TException)
-            VolubleScope.FailWith($"Expected no {typeof(TException).Name} to be thrown, but it was");
+            VolubleScope.FailWith($"Expected no {typeof(TException).Name} to be thrown, but it was", because);
+
+        return assertion;
     }
 
     /// <summary>
     /// Asserts that the async action does not throw any exception.
     /// </summary>
-    public static async Task NotThrowAsync(this VolubleAssertion<Func<Task>> assertion)
+    public static async Task<VolubleAssertion<Func<Task>>> NotThrowAsync(this VolubleAssertion<Func<Task>> assertion, string? because = null)
     {
         if (assertion.Obj is null)
         {
@@ -81,13 +85,15 @@ public static class AsyncActionExtension
         }
 
         if (caught is not null)
-            VolubleScope.FailWith($"Expected no exception to be thrown, but {caught.GetType().Name} was thrown: {caught.Message}");
+            VolubleScope.FailWith($"Expected no exception to be thrown, but {caught.GetType().Name} was thrown: {caught.Message}", because);
+
+        return assertion;
     }
 
     /// <summary>
     /// Asserts that the async action completes within the specified timeout.
     /// </summary>
-    public static async Task CompleteWithin(this VolubleAssertion<Func<Task>> assertion, TimeSpan timeout)
+    public static async Task<VolubleAssertion<Func<Task>>> CompleteWithin(this VolubleAssertion<Func<Task>> assertion, TimeSpan timeout, string? because = null)
     {
         if (assertion.Obj is null)
         {
@@ -102,7 +108,7 @@ public static class AsyncActionExtension
 
         if (completedTask == delayTask)
         {
-            VolubleScope.FailWith($"Expected task to complete within {timeout} but it did not");
+            VolubleScope.FailWith($"Expected task to complete within {timeout} but it did not", because);
         }
         else
         {
@@ -111,12 +117,14 @@ public static class AsyncActionExtension
             // Await the task to propagate any exceptions
             await task;
         }
+
+        return assertion;
     }
 
     /// <summary>
     /// Asserts that the async action throws the specified exception type and returns the exception.
     /// </summary>
-    public static async Task<TException> ThrowAsyncAndReturn<TException>(this VolubleAssertion<Func<Task>> assertion)
+    public static async Task<TException> ThrowAsyncAndReturn<TException>(this VolubleAssertion<Func<Task>> assertion, string? because = null)
         where TException : Exception
     {
         if (assertion.Obj is null)
@@ -137,9 +145,9 @@ public static class AsyncActionExtension
         if (caught is not TException typedException)
         {
             if (caught is null)
-                VolubleScope.FailWith($"Expected {typeof(TException).Name} to be thrown but no exception was thrown");
+                VolubleScope.FailWith($"Expected {typeof(TException).Name} to be thrown but no exception was thrown", because);
             else
-                VolubleScope.FailWith($"Expected {typeof(TException).Name} to be thrown but {caught.GetType().Name} was thrown");
+                VolubleScope.FailWith($"Expected {typeof(TException).Name} to be thrown but {caught.GetType().Name} was thrown", because);
 
             throw new InvalidOperationException("Unreachable");
         }

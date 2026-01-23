@@ -39,18 +39,19 @@ public class VolubleScope : IDisposable
     public void Dispose()
     {
         GC.SuppressFinalize(this);
-        
+
+        // Reset _current before potentially throwing to ensure proper cleanup
+        _current = _old;
+
         if (Failures.Count > 0)
         {
             var message = new StringBuilder();
-            
+
             message.AppendLine("One or more failures occurred during the scope:");
             foreach (var failure in Failures)
                 message.AppendLine(failure.Message);
-            
+
             throw new FailureCollection(Failures, message.ToString());
         }
-        
-        _current = _old;
     }
 }
