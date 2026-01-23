@@ -20,14 +20,103 @@ Dotnet-Cli
 dotnet add package Voluble
 ```
 
-## Usage
-```csharp
-// Simple Assertion
-0.Should().NotBe(130);
+## Features
 
-// Collect all errors
-using (new VolubleScope()) {
-    "syntactic sugar".Should().Be("syntactic sugar");
-}
+- Fluent assertion syntax with `.Should()` entry point
+- Chainable assertions
+- String assertions (contains, starts/ends with, regex matching, length)
+- Numeric assertions (comparisons, ranges, sign, approximations)
+- Collection assertions (contains, count, ordering, equivalence)
+- DateTime assertions (before/after, components, day of week)
+- Type assertions (exact type, assignability)
+- Exception assertions (sync and async)
+- Custom failure messages with `because` parameter
+- `VolubleScope` for collecting multiple assertion failures
+
+## Usage
+
+### Basic Assertions
+```csharp
+"hello".Should().Be("hello");
+42.Should().NotBe(0);
+myObject.Should().NotBeNull();
 ```
 
+### String Assertions
+```csharp
+"hello world".Should().Contain("world");
+"hello world".Should().StartWith("hello");
+"hello world".Should().EndWith("world");
+"hello world".Should().Match(@"hello \w+");
+"hello".Should().HaveLength(5);
+"".Should().BeNullOrEmpty();
+```
+
+### Numeric Assertions
+```csharp
+42.BeGreaterThan(0);
+42.BeLessThanOrEqualTo(100);
+42.BeInRange(1, 50);
+3.14.BeApproximately(Math.PI, tolerance: 0.01);
+(-5).BeNegative();
+0.BeZero();
+```
+
+### Collection Assertions
+```csharp
+var list = new[] { 1, 2, 3 };
+list.Contain(2);
+list.NotContain(5);
+list.HaveCount(3);
+list.NotBeEmpty();
+list.BeInAscendingOrder();
+list.ContainSingle(x => x > 2);
+list.BeEquivalentTo(new[] { 3, 1, 2 }); // order independent
+```
+
+### DateTime Assertions
+```csharp
+DateTime.Now.BeAfter(DateTime.MinValue);
+DateTime.Now.BeOnWeekday();
+someDate.HaveYear(2025);
+someDate.BeCloseTo(expectedDate, TimeSpan.FromSeconds(1));
+```
+
+### Exception Assertions
+```csharp
+Action act = () => throw new InvalidOperationException();
+act.Should().Throw<InvalidOperationException>();
+
+Func<Task> asyncAct = async () => await FailingMethodAsync();
+await asyncAct.Should().ThrowAsync<InvalidOperationException>();
+```
+
+### Type Assertions
+```csharp
+object obj = "hello";
+obj.Should().BeOfType<string>();
+obj.Should().BeAssignableTo<IEnumerable<char>>();
+```
+
+### Custom Failure Messages
+```csharp
+price.Should().Be(0, because: "the cart is empty");
+```
+
+### VolubleScope - Collect Multiple Failures
+By default, assertions fail immediately. Use `VolubleScope` to collect all failures and report them together at the end:
+```csharp
+using (new VolubleScope())
+{
+    1.Should().Be(2);  // collected, doesn't throw yet
+    "a".Should().Be("b");  // collected
+}  // throws here with all failures
+```
+
+## Requirements
+
+- .NET 9.0 or .NET 10.0
+
+## License
+
+[Apache 2.0](LICENSE.md)
