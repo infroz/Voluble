@@ -10,7 +10,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string contains the specified substring.
     /// </summary>
-    public static VolubleAssertion<string?> Contain(this VolubleAssertion<string?> assertion, string substring, string? because = null)
+    public static VolubleAssertion<string> Contain(this VolubleAssertion<string> assertion, string substring, string? because = null)
     {
         if (assertion.Obj is null)
         {
@@ -27,7 +27,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string does not contain the specified substring.
     /// </summary>
-    public static VolubleAssertion<string?> NotContain(this VolubleAssertion<string?> assertion, string substring, string? because = null)
+    public static VolubleAssertion<string> NotContain(this VolubleAssertion<string> assertion, string substring, string? because = null)
     {
         if (assertion.Obj is null)
             return assertion;
@@ -41,7 +41,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string starts with the specified prefix.
     /// </summary>
-    public static VolubleAssertion<string?> StartWith(this VolubleAssertion<string?> assertion, string prefix, string? because = null)
+    public static VolubleAssertion<string> StartWith(this VolubleAssertion<string> assertion, string prefix, string? because = null)
     {
         if (assertion.Obj is null)
         {
@@ -58,7 +58,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string ends with the specified suffix.
     /// </summary>
-    public static VolubleAssertion<string?> EndWith(this VolubleAssertion<string?> assertion, string suffix, string? because = null)
+    public static VolubleAssertion<string> EndWith(this VolubleAssertion<string> assertion, string suffix, string? because = null)
     {
         if (assertion.Obj is null)
         {
@@ -75,7 +75,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string matches the specified regular expression pattern.
     /// </summary>
-    public static VolubleAssertion<string?> Match(this VolubleAssertion<string?> assertion, string pattern, string? because = null)
+    public static VolubleAssertion<string> Match(this VolubleAssertion<string> assertion, string pattern, string? because = null)
     {
         if (assertion.Obj is null)
         {
@@ -92,7 +92,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string does not match the specified regular expression pattern.
     /// </summary>
-    public static VolubleAssertion<string?> NotMatch(this VolubleAssertion<string?> assertion, string pattern, string? because = null)
+    public static VolubleAssertion<string> NotMatch(this VolubleAssertion<string> assertion, string pattern, string? because = null)
     {
         if (assertion.Obj is null)
             return assertion;
@@ -106,7 +106,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string is null or empty.
     /// </summary>
-    public static VolubleAssertion<string?> BeNullOrEmpty(this VolubleAssertion<string?> assertion, string? because = null)
+    public static VolubleAssertion<string> BeNullOrEmpty(this VolubleAssertion<string> assertion, string? because = null)
     {
         if (!string.IsNullOrEmpty(assertion.Obj))
             VolubleScope.FailWith($"Expected {assertion.Name} to be null or empty but was \"{assertion.Obj}\"", because);
@@ -117,7 +117,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string is not null or empty.
     /// </summary>
-    public static VolubleAssertion<string?> NotBeNullOrEmpty(this VolubleAssertion<string?> assertion, string? because = null)
+    public static VolubleAssertion<string> NotBeNullOrEmpty(this VolubleAssertion<string> assertion, string? because = null)
     {
         if (string.IsNullOrEmpty(assertion.Obj))
             VolubleScope.FailWith($"Expected {assertion.Name} to not be null or empty but it was", because);
@@ -128,7 +128,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string is null or whitespace.
     /// </summary>
-    public static VolubleAssertion<string?> BeNullOrWhiteSpace(this VolubleAssertion<string?> assertion, string? because = null)
+    public static VolubleAssertion<string> BeNullOrWhiteSpace(this VolubleAssertion<string> assertion, string? because = null)
     {
         if (!string.IsNullOrWhiteSpace(assertion.Obj))
             VolubleScope.FailWith($"Expected {assertion.Name} to be null or whitespace but was \"{assertion.Obj}\"", because);
@@ -139,7 +139,7 @@ public static class StringExtension
     /// <summary>
     /// Asserts that the string is not null or whitespace.
     /// </summary>
-    public static VolubleAssertion<string?> NotBeNullOrWhiteSpace(this VolubleAssertion<string?> assertion, string? because = null)
+    public static VolubleAssertion<string> NotBeNullOrWhiteSpace(this VolubleAssertion<string> assertion, string? because = null)
     {
         if (string.IsNullOrWhiteSpace(assertion.Obj))
             VolubleScope.FailWith($"Expected {assertion.Name} to not be null or whitespace but it was", because);

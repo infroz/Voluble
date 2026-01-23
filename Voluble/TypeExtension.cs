@@ -8,7 +8,7 @@ public static class TypeExtension
     /// <summary>
     /// Asserts that the object is exactly the specified type (not a derived type).
     /// </summary>
-    public static VolubleAssertion<object?> BeOfType<TExpected>(this VolubleAssertion<object?> assertion, string? because = null)
+    public static VolubleAssertion<object> BeOfType<TExpected>(this VolubleAssertion<object> assertion, string? because = null)
     {
         if (assertion.Obj is null)
         {
@@ -26,7 +26,7 @@ public static class TypeExtension
     /// <summary>
     /// Asserts that the object is not the specified type.
     /// </summary>
-    public static VolubleAssertion<object?> NotBeOfType<TExpected>(this VolubleAssertion<object?> assertion, string? because = null)
+    public static VolubleAssertion<object> NotBeOfType<TExpected>(this VolubleAssertion<object> assertion, string? because = null)
     {
         if (assertion.Obj is null)
             return assertion; // null is not of any type
@@ -41,7 +41,7 @@ public static class TypeExtension
     /// <summary>
     /// Asserts that the object can be assigned to the specified type (includes inheritance and interfaces).
     /// </summary>
-    public static VolubleAssertion<object?> BeAssignableTo<TExpected>(this VolubleAssertion<object?> assertion, string? because = null)
+    public static VolubleAssertion<object> BeAssignableTo<TExpected>(this VolubleAssertion<object> assertion, string? because = null)
     {
         if (assertion.Obj is null)
         {
@@ -58,7 +58,7 @@ public static class TypeExtension
     /// <summary>
     /// Asserts that the object cannot be assigned to the specified type.
     /// </summary>
-    public static VolubleAssertion<object?> NotBeAssignableTo<TExpected>(this VolubleAssertion<object?> assertion, string? because = null)
+    public static VolubleAssertion<object> NotBeAssignableTo<TExpected>(this VolubleAssertion<object> assertion, string? because = null)
     {
         if (assertion.Obj is null)
             return assertion; // null cannot be assigned

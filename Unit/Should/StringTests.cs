@@ -9,27 +9,31 @@ public class StringTests
     [Fact]
     public void Contain_WhenStringContainsSubstring_ShouldNotThrow()
     {
-        var act = () => "hello world".Should().Contain("world");
-
-        var exception = Record.Exception(act);
+        var exception = Record.Exception(Act);
         Assert.Null(exception);
+        return;
+
+        VolubleAssertion<string> Act() => "hello world".Should().Contain("world");
     }
 
     [Fact]
     public void Contain_WhenStringDoesNotContainSubstring_ShouldThrow()
     {
-        var act = () => "hello".Should().Contain("world");
+        Assert.Throws<Failure>(Act);
+        return;
 
-        Assert.Throws<Failure>(act);
+        VolubleAssertion<string> Act() => "hello".Should().Contain("world");
     }
 
     [Fact]
     public void Contain_WhenStringIsNull_ShouldThrow()
     {
         string? value = null;
-        var act = () => value.Should().Contain("test");
 
-        Assert.Throws<Failure>(act);
+        Assert.Throws<Failure>(Act);
+        return;
+
+        VolubleAssertion<string> Act() => value.Should().Contain("test");
     }
 
     #endregion
@@ -39,28 +43,32 @@ public class StringTests
     [Fact]
     public void NotContain_WhenStringDoesNotContainSubstring_ShouldNotThrow()
     {
-        var act = () => "hello".Should().NotContain("world");
-
-        var exception = Record.Exception(act);
+        var exception = Record.Exception(Act);
         Assert.Null(exception);
+        return;
+
+        VolubleAssertion<string> Act() => "hello".Should().NotContain("world");
     }
 
     [Fact]
     public void NotContain_WhenStringContainsSubstring_ShouldThrow()
     {
-        var act = () => "hello world".Should().NotContain("world");
+        Assert.Throws<Failure>(Act);
+        return;
 
-        Assert.Throws<Failure>(act);
+        VolubleAssertion<string> Act() => "hello world".Should().NotContain("world");
     }
 
     [Fact]
     public void NotContain_WhenStringIsNull_ShouldNotThrow()
     {
         string? value = null;
-        var act = () => value.Should().NotContain("test");
 
-        var exception = Record.Exception(act);
+        var exception = Record.Exception(Act);
         Assert.Null(exception);
+        return;
+
+        VolubleAssertion<string> Act() => value.Should().NotContain("test");
     }
 
     #endregion
