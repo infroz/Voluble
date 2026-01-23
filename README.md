@@ -1,6 +1,9 @@
-Notice - This library is essentially made as a joke, feel free to use it but as of now I do not guarantee updates. Consider using Shouldly.
+# Voluble [![Build and Test](https://github.com/infroz/Voluble/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/infroz/Voluble/actions/workflows/build-and-test.yml) ![NuGet Version](https://img.shields.io/nuget/v/Voluble)
 
-# Voluble
+An open-sourced alternative to expressive assertions.
+
+Notice - This library was made as a test to see how easy it was to create expressive assertions and a bit of jab at another library whom shall not be named. Consider using Shouldly, but feel free to test this library if you want to.
+
 Definition
 ```quote
 (adjective)
